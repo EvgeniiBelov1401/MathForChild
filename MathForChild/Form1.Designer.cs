@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             groupBoxOptions = new GroupBox();
+            labelTourCount = new Label();
+            buttonOptions = new Button();
+            checkBoxHintShow = new CheckBox();
             groupBoxTask = new GroupBox();
             labelCheckResult = new Label();
             labelHint = new Label();
@@ -39,18 +43,56 @@
             textBoxResult = new TextBox();
             textBoxNum2 = new TextBox();
             textBoxNum1 = new TextBox();
+            timer1 = new System.Windows.Forms.Timer(components);
+            textBoxTourCount = new TextBox();
+            groupBoxOptions.SuspendLayout();
             groupBoxTask.SuspendLayout();
             SuspendLayout();
             // 
             // groupBoxOptions
             // 
             groupBoxOptions.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBoxOptions.Controls.Add(textBoxTourCount);
+            groupBoxOptions.Controls.Add(labelTourCount);
+            groupBoxOptions.Controls.Add(buttonOptions);
+            groupBoxOptions.Controls.Add(checkBoxHintShow);
             groupBoxOptions.Location = new Point(24, 32);
             groupBoxOptions.Name = "groupBoxOptions";
             groupBoxOptions.Size = new Size(1384, 125);
             groupBoxOptions.TabIndex = 0;
             groupBoxOptions.TabStop = false;
             groupBoxOptions.Text = "Настройки";
+            // 
+            // labelTourCount
+            // 
+            labelTourCount.AutoSize = true;
+            labelTourCount.ImageAlign = ContentAlignment.MiddleRight;
+            labelTourCount.Location = new Point(208, 40);
+            labelTourCount.Name = "labelTourCount";
+            labelTourCount.Size = new Size(108, 20);
+            labelTourCount.TabIndex = 2;
+            labelTourCount.Text = "Кол-во туров: ";
+            // 
+            // buttonOptions
+            // 
+            buttonOptions.Location = new Point(32, 88);
+            buttonOptions.Name = "buttonOptions";
+            buttonOptions.Size = new Size(144, 29);
+            buttonOptions.TabIndex = 1;
+            buttonOptions.Text = "Применить";
+            buttonOptions.UseVisualStyleBackColor = true;
+            buttonOptions.Click += buttonOptions_Click;
+            // 
+            // checkBoxHintShow
+            // 
+            checkBoxHintShow.AutoSize = true;
+            checkBoxHintShow.Location = new Point(32, 40);
+            checkBoxHintShow.Name = "checkBoxHintShow";
+            checkBoxHintShow.Size = new Size(161, 24);
+            checkBoxHintShow.TabIndex = 0;
+            checkBoxHintShow.Text = "Показать подсказу";
+            checkBoxHintShow.UseVisualStyleBackColor = true;
+            checkBoxHintShow.CheckedChanged += checkBoxHintShow_CheckedChanged;
             // 
             // groupBoxTask
             // 
@@ -76,19 +118,18 @@
             labelCheckResult.AutoSize = true;
             labelCheckResult.Location = new Point(760, 40);
             labelCheckResult.Name = "labelCheckResult";
-            labelCheckResult.Size = new Size(50, 20);
+            labelCheckResult.Size = new Size(0, 20);
             labelCheckResult.TabIndex = 5;
-            labelCheckResult.Text = "label1";
             labelCheckResult.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // labelHint
             // 
             labelHint.AutoSize = true;
+            labelHint.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             labelHint.Location = new Point(288, 40);
             labelHint.Name = "labelHint";
-            labelHint.Size = new Size(50, 20);
+            labelHint.Size = new Size(0, 28);
             labelHint.TabIndex = 2;
-            labelHint.Text = "label1";
             labelHint.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // buttonStart
@@ -162,6 +203,18 @@
             textBoxNum1.TabIndex = 1;
             textBoxNum1.TextAlign = HorizontalAlignment.Center;
             // 
+            // timer1
+            // 
+            timer1.Tick += Timer1_Tick;
+            // 
+            // textBoxTourCount
+            // 
+            textBoxTourCount.Location = new Point(312, 40);
+            textBoxTourCount.Name = "textBoxTourCount";
+            textBoxTourCount.Size = new Size(64, 27);
+            textBoxTourCount.TabIndex = 3;
+            textBoxTourCount.TextAlign = HorizontalAlignment.Center;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -171,6 +224,8 @@
             Controls.Add(groupBoxOptions);
             Name = "FormMain";
             Text = "Математика для ребенка";
+            groupBoxOptions.ResumeLayout(false);
+            groupBoxOptions.PerformLayout();
             groupBoxTask.ResumeLayout(false);
             groupBoxTask.PerformLayout();
             ResumeLayout(false);
@@ -189,5 +244,10 @@
         private Label labelCharEqual;
         private Label labelCheckResult;
         private Label labelHint;
+        private CheckBox checkBoxHintShow;
+        private Button buttonOptions;
+        private System.Windows.Forms.Timer timer1;
+        private Label labelTourCount;
+        private TextBox textBoxTourCount;
     }
 }
