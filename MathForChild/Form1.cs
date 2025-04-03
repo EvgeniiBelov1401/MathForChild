@@ -10,6 +10,11 @@ namespace MathForChild
         private uint result;
         private uint iteration;
         private uint tour;
+        private uint wrightAnswer;
+        private uint wrongAnswer;
+
+        double procentResult;
+
 
         private string? hintNum1;
         private string? hintNum2;
@@ -33,6 +38,10 @@ namespace MathForChild
         {
             iteration = 1;
 
+            wrightAnswer = 0;
+            wrongAnswer = 0;
+            procentResult = 0;
+
             Clear();
             Execute();
 
@@ -47,12 +56,14 @@ namespace MathForChild
                 textBoxResult.BackColor = Color.Green;
                 labelCheckResult.Visible = true;
                 labelCheckResult.Text = "ПРАВИЛЬНО!!!";
+                wrightAnswer++;
             }
             else
             {
                 textBoxResult.BackColor = Color.Red;
                 labelCheckResult.Visible = true;
                 labelCheckResult.Text = "НЕПРАВИЛЬНО!!!";
+                wrongAnswer++;
             }
             timer1.Start();
 
@@ -90,6 +101,8 @@ namespace MathForChild
             else
             {
                 VisibleItems(true);
+                textBoxTestresult.Visible = true;
+                ShowTestResult();
             }
         }
 
@@ -104,6 +117,8 @@ namespace MathForChild
             labelHint.Text = string.Empty;
             hintNum1 = string.Empty;
             hintNum2 = string.Empty;
+            textBoxTestresult.Clear();
+            textBoxTestresult.Visible = false;
 
             if (checkBoxHintShow.Checked) labelHint.Visible = true;
             else labelHint.Visible = false;
@@ -192,7 +207,7 @@ namespace MathForChild
             return hintNum2;
         }
 
-        //Чек-бок "Кол-во туров
+        //Метод ввода кол-ва туров
         private void TourCount()
         {
             try
@@ -215,6 +230,17 @@ namespace MathForChild
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        //Метод вывода в textBox результатов всего теста
+        private void ShowTestResult()
+        {
+            procentResult = ((double)wrightAnswer / (double)tour)*100;
+            textBoxTestresult.Text = $"Результаты:{Environment.NewLine}" +
+                $"Проведено туров: {tour}{Environment.NewLine}" +
+                $"Правильных ответов: {wrightAnswer}{Environment.NewLine}" +
+                $"Неправильных ответов: {wrongAnswer}{Environment.NewLine}" +
+                $"ИТОГ: {procentResult.ToString("F0")}%";
         }
 
     }

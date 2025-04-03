@@ -45,6 +45,7 @@
             textBoxNum2 = new TextBox();
             textBoxNum1 = new TextBox();
             timer1 = new System.Windows.Forms.Timer(components);
+            textBoxTestresult = new TextBox();
             groupBoxOptions.SuspendLayout();
             groupBoxTask.SuspendLayout();
             SuspendLayout();
@@ -205,6 +206,7 @@
             // 
             // textBoxNum2
             // 
+            textBoxNum2.BackColor = SystemColors.Control;
             textBoxNum2.Font = new Font("Segoe UI Black", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
             textBoxNum2.Location = new Point(455, 54);
             textBoxNum2.Margin = new Padding(3, 2, 3, 2);
@@ -215,6 +217,7 @@
             // 
             // textBoxNum1
             // 
+            textBoxNum1.BackColor = SystemColors.Control;
             textBoxNum1.Font = new Font("Segoe UI Black", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
             textBoxNum1.Location = new Point(245, 54);
             textBoxNum1.Margin = new Padding(3, 2, 3, 2);
@@ -227,11 +230,24 @@
             // 
             timer1.Tick += Timer1_Tick;
             // 
+            // textBoxTestresult
+            // 
+            textBoxTestresult.BackColor = SystemColors.Control;
+            textBoxTestresult.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            textBoxTestresult.Location = new Point(923, 135);
+            textBoxTestresult.Multiline = true;
+            textBoxTestresult.Name = "textBoxTestresult";
+            textBoxTestresult.Size = new Size(309, 129);
+            textBoxTestresult.TabIndex = 2;
+            textBoxTestresult.TextAlign = HorizontalAlignment.Center;
+            textBoxTestresult.Visible = false;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1297, 715);
+            Controls.Add(textBoxTestresult);
             Controls.Add(groupBoxTask);
             Controls.Add(groupBoxOptions);
             Margin = new Padding(3, 2, 3, 2);
@@ -242,6 +258,7 @@
             groupBoxTask.ResumeLayout(false);
             groupBoxTask.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -262,5 +279,6 @@
         private System.Windows.Forms.Timer timer1;
         private Label labelTourCount;
         private TextBox textBoxTourCount;
+        private TextBox textBoxTestresult;
     }
 }
