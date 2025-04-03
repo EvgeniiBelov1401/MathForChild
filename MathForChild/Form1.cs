@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Eventing.Reader;
+using Microsoft.VisualBasic;
+using System.Diagnostics.Eventing.Reader;
 
 namespace MathForChild
 {
@@ -6,7 +7,7 @@ namespace MathForChild
     {
         private uint num1;
         private uint num2;
-        private uint MyResult;
+        private uint result;
         private uint iteration;
         private uint tour;
 
@@ -30,10 +31,11 @@ namespace MathForChild
         //Кнопка "Старт/Заново"
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            tour = 0;
-            VisibleItems(false);
+            iteration = 1;
+
+            Clear();
             Execute();
-            VisibleItems(true);
+
         }
 
         //Кнопка "Проверить результат"
@@ -70,9 +72,9 @@ namespace MathForChild
         //Основной Метод "Выполнить"
         private void Execute()
         {
-           while(tour <= iteration)
+            Clear();
+            if (iteration <= tour)
             {
-                Clear();
                 Random rnd = new Random();
 
                 num1 = (uint)rnd.Next(0, 10);
@@ -83,40 +85,45 @@ namespace MathForChild
                 textBoxResult.Focus();
 
                 labelHint.Text = $"{ShowHintNum1()} + {ShowHintNum2()}";
-                tour++;
+                
             }
-            
+            else
+            {
                 VisibleItems(true);
-                Clear();
+            }
         }
 
         //Метод "Очистить данные"
         private void Clear()
         {
-            textBoxNum1.Text = string.Empty;
-            textBoxNum2.Text = string.Empty;
-            textBoxResult.Text = string.Empty;
-            textBoxResult.BackColor = Color.White;
-
-
+            textBoxResult.Clear();
+            textBoxNum1.Clear();
+            textBoxNum2.Clear();
             labelCheckResult.Visible = false;
-            labelCheckResult.Text = string.Empty;
-
+            textBoxResult.BackColor = Color.White;
+            labelHint.Text = string.Empty;
             hintNum1 = string.Empty;
             hintNum2 = string.Empty;
+
+            if (checkBoxHintShow.Checked) labelHint.Visible = true;
+            else labelHint.Visible = false;
 
         }
 
         //Метод "Ввод ожидаемого результата"
         private bool InputData()
         {
+            textBoxResult.BackColor = Color.White;
             try
             {
-                if (uint.TryParse(textBoxResult.Text, out uint res))
+                if (uint.TryParse(textBoxResult.Text, out uint MyRes))
                 {
-                    this.MyResult = res;
-                    if (MyResult == Sum(num1, num2)) return true;
+                    result = Sum(num1, num2);
+                    labelCheckResult.Visible = true;
+                    iteration++;
+                    if (MyRes == result) return true;
                     else return false;
+                    
 
                 }
                 else
@@ -155,19 +162,14 @@ namespace MathForChild
             groupBoxOptions.Visible = vis;
             checkBoxHintShow.Visible = vis;
             buttonOptions.Visible = vis;
+            labelTourCount.Visible = vis;
+            textBoxTourCount.Visible = vis;
         }
 
         //Чек-бокс "Показать подсказу"
         private void checkBoxHintShow_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxHintShow.Checked)
-            {
                 labelHint.Visible = true;
-            }
-            else
-            {
-                labelHint.Visible = false;
-            }
         }
 
         //Метод "Показать строку подсказки для числа 1"
@@ -197,7 +199,7 @@ namespace MathForChild
             {
                 if (uint.TryParse(textBoxTourCount.Text, out uint tourCount))
                 {
-                    this.iteration = tourCount;
+                    tour = tourCount;
                     VisibleItems(false);
                 }
                 else
