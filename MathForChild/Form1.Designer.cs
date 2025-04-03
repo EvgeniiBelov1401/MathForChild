@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             groupBoxOptions = new GroupBox();
+            textBoxTourCount = new TextBox();
             labelTourCount = new Label();
             buttonOptions = new Button();
             checkBoxHintShow = new CheckBox();
@@ -44,7 +45,6 @@
             textBoxNum2 = new TextBox();
             textBoxNum1 = new TextBox();
             timer1 = new System.Windows.Forms.Timer(components);
-            textBoxTourCount = new TextBox();
             groupBoxOptions.SuspendLayout();
             groupBoxTask.SuspendLayout();
             SuspendLayout();
@@ -56,28 +56,40 @@
             groupBoxOptions.Controls.Add(labelTourCount);
             groupBoxOptions.Controls.Add(buttonOptions);
             groupBoxOptions.Controls.Add(checkBoxHintShow);
-            groupBoxOptions.Location = new Point(24, 32);
+            groupBoxOptions.Location = new Point(21, 24);
+            groupBoxOptions.Margin = new Padding(3, 2, 3, 2);
             groupBoxOptions.Name = "groupBoxOptions";
-            groupBoxOptions.Size = new Size(1384, 125);
+            groupBoxOptions.Padding = new Padding(3, 2, 3, 2);
+            groupBoxOptions.Size = new Size(1211, 94);
             groupBoxOptions.TabIndex = 0;
             groupBoxOptions.TabStop = false;
             groupBoxOptions.Text = "Настройки";
+            // 
+            // textBoxTourCount
+            // 
+            textBoxTourCount.Location = new Point(274, 28);
+            textBoxTourCount.Margin = new Padding(3, 2, 3, 2);
+            textBoxTourCount.Name = "textBoxTourCount";
+            textBoxTourCount.Size = new Size(45, 23);
+            textBoxTourCount.TabIndex = 3;
+            textBoxTourCount.TextAlign = HorizontalAlignment.Center;
             // 
             // labelTourCount
             // 
             labelTourCount.AutoSize = true;
             labelTourCount.ImageAlign = ContentAlignment.MiddleRight;
-            labelTourCount.Location = new Point(208, 40);
+            labelTourCount.Location = new Point(182, 30);
             labelTourCount.Name = "labelTourCount";
-            labelTourCount.Size = new Size(108, 20);
+            labelTourCount.Size = new Size(86, 15);
             labelTourCount.TabIndex = 2;
             labelTourCount.Text = "Кол-во туров: ";
             // 
             // buttonOptions
             // 
-            buttonOptions.Location = new Point(32, 88);
+            buttonOptions.Location = new Point(28, 66);
+            buttonOptions.Margin = new Padding(3, 2, 3, 2);
             buttonOptions.Name = "buttonOptions";
-            buttonOptions.Size = new Size(144, 29);
+            buttonOptions.Size = new Size(126, 22);
             buttonOptions.TabIndex = 1;
             buttonOptions.Text = "Применить";
             buttonOptions.UseVisualStyleBackColor = true;
@@ -86,9 +98,10 @@
             // checkBoxHintShow
             // 
             checkBoxHintShow.AutoSize = true;
-            checkBoxHintShow.Location = new Point(32, 40);
+            checkBoxHintShow.Location = new Point(28, 30);
+            checkBoxHintShow.Margin = new Padding(3, 2, 3, 2);
             checkBoxHintShow.Name = "checkBoxHintShow";
-            checkBoxHintShow.Size = new Size(161, 24);
+            checkBoxHintShow.Size = new Size(128, 19);
             checkBoxHintShow.TabIndex = 0;
             checkBoxHintShow.Text = "Показать подсказу";
             checkBoxHintShow.UseVisualStyleBackColor = true;
@@ -106,9 +119,11 @@
             groupBoxTask.Controls.Add(textBoxResult);
             groupBoxTask.Controls.Add(textBoxNum2);
             groupBoxTask.Controls.Add(textBoxNum1);
-            groupBoxTask.Location = new Point(32, 168);
+            groupBoxTask.Location = new Point(28, 126);
+            groupBoxTask.Margin = new Padding(3, 2, 3, 2);
             groupBoxTask.Name = "groupBoxTask";
-            groupBoxTask.Size = new Size(1016, 184);
+            groupBoxTask.Padding = new Padding(3, 2, 3, 2);
+            groupBoxTask.Size = new Size(889, 138);
             groupBoxTask.TabIndex = 1;
             groupBoxTask.TabStop = false;
             groupBoxTask.Text = "Задание";
@@ -116,9 +131,9 @@
             // labelCheckResult
             // 
             labelCheckResult.AutoSize = true;
-            labelCheckResult.Location = new Point(760, 40);
+            labelCheckResult.Location = new Point(665, 30);
             labelCheckResult.Name = "labelCheckResult";
-            labelCheckResult.Size = new Size(0, 20);
+            labelCheckResult.Size = new Size(0, 15);
             labelCheckResult.TabIndex = 5;
             labelCheckResult.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -126,18 +141,19 @@
             // 
             labelHint.AutoSize = true;
             labelHint.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            labelHint.Location = new Point(288, 40);
+            labelHint.Location = new Point(252, 30);
             labelHint.Name = "labelHint";
-            labelHint.Size = new Size(0, 28);
+            labelHint.Size = new Size(0, 21);
             labelHint.TabIndex = 2;
             labelHint.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // buttonStart
             // 
             buttonStart.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonStart.Location = new Point(16, 32);
+            buttonStart.Location = new Point(14, 24);
+            buttonStart.Margin = new Padding(3, 2, 3, 2);
             buttonStart.Name = "buttonStart";
-            buttonStart.Size = new Size(232, 48);
+            buttonStart.Size = new Size(203, 36);
             buttonStart.TabIndex = 0;
             buttonStart.Text = "Старт/Заново";
             buttonStart.UseVisualStyleBackColor = true;
@@ -146,9 +162,10 @@
             // buttonCalculate
             // 
             buttonCalculate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            buttonCalculate.Location = new Point(736, 120);
+            buttonCalculate.Location = new Point(644, 90);
+            buttonCalculate.Margin = new Padding(3, 2, 3, 2);
             buttonCalculate.Name = "buttonCalculate";
-            buttonCalculate.Size = new Size(232, 48);
+            buttonCalculate.Size = new Size(203, 36);
             buttonCalculate.TabIndex = 4;
             buttonCalculate.Text = "Проверить результат";
             buttonCalculate.UseVisualStyleBackColor = true;
@@ -158,9 +175,9 @@
             // 
             labelCharOperation.AutoSize = true;
             labelCharOperation.Font = new Font("Segoe UI Black", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            labelCharOperation.Location = new Point(480, 72);
+            labelCharOperation.Location = new Point(420, 54);
             labelCharOperation.Name = "labelCharOperation";
-            labelCharOperation.Size = new Size(30, 31);
+            labelCharOperation.Size = new Size(26, 25);
             labelCharOperation.TabIndex = 3;
             labelCharOperation.Text = "+";
             labelCharOperation.TextAlign = ContentAlignment.MiddleCenter;
@@ -169,9 +186,9 @@
             // 
             labelCharEqual.AutoSize = true;
             labelCharEqual.Font = new Font("Segoe UI Black", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            labelCharEqual.Location = new Point(720, 72);
+            labelCharEqual.Location = new Point(630, 54);
             labelCharEqual.Name = "labelCharEqual";
-            labelCharEqual.Size = new Size(30, 31);
+            labelCharEqual.Size = new Size(26, 25);
             labelCharEqual.TabIndex = 2;
             labelCharEqual.Text = "=";
             labelCharEqual.TextAlign = ContentAlignment.MiddleCenter;
@@ -179,27 +196,30 @@
             // textBoxResult
             // 
             textBoxResult.Font = new Font("Segoe UI Black", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            textBoxResult.Location = new Point(760, 72);
+            textBoxResult.Location = new Point(665, 54);
+            textBoxResult.Margin = new Padding(3, 2, 3, 2);
             textBoxResult.Name = "textBoxResult";
-            textBoxResult.Size = new Size(192, 39);
+            textBoxResult.Size = new Size(168, 32);
             textBoxResult.TabIndex = 3;
             textBoxResult.TextAlign = HorizontalAlignment.Center;
             // 
             // textBoxNum2
             // 
             textBoxNum2.Font = new Font("Segoe UI Black", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            textBoxNum2.Location = new Point(520, 72);
+            textBoxNum2.Location = new Point(455, 54);
+            textBoxNum2.Margin = new Padding(3, 2, 3, 2);
             textBoxNum2.Name = "textBoxNum2";
-            textBoxNum2.Size = new Size(192, 39);
+            textBoxNum2.Size = new Size(168, 32);
             textBoxNum2.TabIndex = 2;
             textBoxNum2.TextAlign = HorizontalAlignment.Center;
             // 
             // textBoxNum1
             // 
             textBoxNum1.Font = new Font("Segoe UI Black", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            textBoxNum1.Location = new Point(280, 72);
+            textBoxNum1.Location = new Point(245, 54);
+            textBoxNum1.Margin = new Padding(3, 2, 3, 2);
             textBoxNum1.Name = "textBoxNum1";
-            textBoxNum1.Size = new Size(192, 39);
+            textBoxNum1.Size = new Size(168, 32);
             textBoxNum1.TabIndex = 1;
             textBoxNum1.TextAlign = HorizontalAlignment.Center;
             // 
@@ -207,21 +227,14 @@
             // 
             timer1.Tick += Timer1_Tick;
             // 
-            // textBoxTourCount
-            // 
-            textBoxTourCount.Location = new Point(312, 40);
-            textBoxTourCount.Name = "textBoxTourCount";
-            textBoxTourCount.Size = new Size(64, 27);
-            textBoxTourCount.TabIndex = 3;
-            textBoxTourCount.TextAlign = HorizontalAlignment.Center;
-            // 
             // FormMain
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1482, 953);
+            ClientSize = new Size(1297, 715);
             Controls.Add(groupBoxTask);
             Controls.Add(groupBoxOptions);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormMain";
             Text = "Математика для ребенка";
             groupBoxOptions.ResumeLayout(false);
