@@ -21,6 +21,11 @@ namespace MathForChild
 
         private string? hintNum1;
         private string? hintNum2;
+        private string? operationChar;
+        private string picGold = "gold.gif";
+        private string picSilver= "silver.gif";
+        private string picBronze = "bronze.gif";
+        private string picStupid = "stupid.gif";
 
         public FormMain()
         {
@@ -38,11 +43,22 @@ namespace MathForChild
         //Кнопка "Старт/Заново"
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            iteration = 1;
+            iteration = 1;            
 
             wrightAnswer = 0;
             wrongAnswer = 0;
             procentResult = 0;
+
+            if (radioButtonSum.Checked)
+            {
+                operationChar = "+";
+                labelCharOperation.Text = operationChar;
+            }
+            if (radioButtonMinus.Checked)
+            {
+                operationChar = "-";
+                labelCharOperation.Text = operationChar;
+            }
 
             Clear();
             Execute();
@@ -94,16 +110,28 @@ namespace MathForChild
             Clear();
             if (iteration <= tour)
             {
+                labelTourNumber.Text = $"{iteration} / {tour}";
                 Random rnd = new Random();
-
-                num1 = (uint)rnd.Next((int)valueFrom, (int)valueTo);
-                num2 = (uint)rnd.Next((int)valueFrom, (int)valueTo);
+                if (operationChar=="+")
+                {
+                    num1 = (uint)rnd.Next((int)valueFrom, (int)valueTo);
+                    num2 = (uint)rnd.Next((int)valueFrom, (int)valueTo);
+                }
+                if (operationChar=="-")
+                {
+                    num2 = valueTo;
+                    num1 = (uint)rnd.Next((int)valueFrom, (int)valueTo);
+                    while (num2 > num1)
+                    {
+                        num2 = (uint)rnd.Next((int)valueFrom, (int)valueTo);
+                    }
+                }
 
                 textBoxNum1.Text = num1.ToString();
                 textBoxNum2.Text = num2.ToString();
                 textBoxResult.Focus();
 
-                labelHint.Text = $"{ShowHintNum1()} + {ShowHintNum2()}";
+                labelHint.Text = $"{ShowHintNum1()} {operationChar} {ShowHintNum2()}";
             }
             else
             {
@@ -112,6 +140,7 @@ namespace MathForChild
                 textBoxValueTo.Clear();
                 textBoxTestresult.Visible = true;
                 ShowTestResult();
+                labelTourNumber.Text = string.Empty;
             }
         }
 
@@ -128,6 +157,7 @@ namespace MathForChild
             hintNum2 = string.Empty;
             textBoxTestresult.Clear();
             textBoxTestresult.Visible = false;
+            pictureBoxForChild.Visible = false;            
 
             if (checkBoxHintShow.Checked) labelHint.Visible = true;
             else labelHint.Visible = false;
@@ -141,7 +171,14 @@ namespace MathForChild
             {
                 if (uint.TryParse(textBoxResult.Text, out uint MyRes))
                 {
-                    result = Sum(num1, num2);
+                    if (operationChar=="+")
+                    {
+                        result = Sum(num1, num2);
+                    }
+                    if (operationChar=="-")
+                    {
+                        result = Minus(num1, num2);
+                    }
                     labelCheckResult.Visible = true;
                     iteration++;
                     if (MyRes == result) return true;
@@ -173,7 +210,7 @@ namespace MathForChild
         //Метод "Вычитание"
         private uint Minus(uint num1, uint num2)
         {
-            return num1 + num2;
+            return num1 - num2;
         }
 
         //Метод "Видимость данных"
@@ -240,6 +277,27 @@ namespace MathForChild
                 $"Правильных ответов: {wrightAnswer}{Environment.NewLine}" +
                 $"Неправильных ответов: {wrongAnswer}{Environment.NewLine}" +
                 $"ИТОГ: {procentResult.ToString("F0")}%";
+
+            if (procentResult>=90)
+            {
+                pictureBoxForChild.Visible = true;
+                pictureBoxForChild.Image = Image.FromFile(picGold);
+            }
+            else if(procentResult>=70 && procentResult < 90)
+            {
+                pictureBoxForChild.Visible = true;
+                pictureBoxForChild.Image = Image.FromFile(picSilver);
+            }
+            else if (procentResult >= 50 && procentResult < 70)
+            {
+                pictureBoxForChild.Visible = true;
+                pictureBoxForChild.Image = Image.FromFile(picBronze);
+            }
+            else
+            {
+                pictureBoxForChild.Visible = true;
+                pictureBoxForChild.Image = Image.FromFile(picStupid);
+            }
         }
 
         //Метод установки времени между турами
@@ -351,5 +409,6 @@ namespace MathForChild
                 MessageBox.Show(ex.Message);
             }
         }
+
     }
 }

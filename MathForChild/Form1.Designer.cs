@@ -30,6 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             groupBoxOptions = new GroupBox();
+            groupBoxOperation = new GroupBox();
+            radioButtonSum = new RadioButton();
+            radioButtonMinus = new RadioButton();
             textBoxValueTo = new TextBox();
             labelValueRangeTo = new Label();
             textBoxValueFrom = new TextBox();
@@ -41,6 +44,7 @@
             buttonOptions = new Button();
             checkBoxHintShow = new CheckBox();
             groupBoxTask = new GroupBox();
+            labelTourNumber = new Label();
             labelCheckResult = new Label();
             labelHint = new Label();
             buttonStart = new Button();
@@ -52,13 +56,17 @@
             textBoxNum1 = new TextBox();
             timer1 = new System.Windows.Forms.Timer(components);
             textBoxTestresult = new TextBox();
+            pictureBoxForChild = new PictureBox();
             groupBoxOptions.SuspendLayout();
+            groupBoxOperation.SuspendLayout();
             groupBoxTask.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxForChild).BeginInit();
             SuspendLayout();
             // 
             // groupBoxOptions
             // 
             groupBoxOptions.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBoxOptions.Controls.Add(groupBoxOperation);
             groupBoxOptions.Controls.Add(textBoxValueTo);
             groupBoxOptions.Controls.Add(labelValueRangeTo);
             groupBoxOptions.Controls.Add(textBoxValueFrom);
@@ -77,6 +85,39 @@
             groupBoxOptions.TabIndex = 0;
             groupBoxOptions.TabStop = false;
             groupBoxOptions.Text = "Настройки";
+            // 
+            // groupBoxOperation
+            // 
+            groupBoxOperation.Controls.Add(radioButtonSum);
+            groupBoxOperation.Controls.Add(radioButtonMinus);
+            groupBoxOperation.Location = new Point(843, 11);
+            groupBoxOperation.Name = "groupBoxOperation";
+            groupBoxOperation.Size = new Size(130, 77);
+            groupBoxOperation.TabIndex = 12;
+            groupBoxOperation.TabStop = false;
+            groupBoxOperation.Text = "Операции";
+            // 
+            // radioButtonSum
+            // 
+            radioButtonSum.AutoSize = true;
+            radioButtonSum.Location = new Point(6, 22);
+            radioButtonSum.Name = "radioButtonSum";
+            radioButtonSum.Size = new Size(101, 19);
+            radioButtonSum.TabIndex = 10;
+            radioButtonSum.TabStop = true;
+            radioButtonSum.Text = "Сложение (+)";
+            radioButtonSum.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMinus
+            // 
+            radioButtonMinus.AutoSize = true;
+            radioButtonMinus.Location = new Point(6, 46);
+            radioButtonMinus.Name = "radioButtonMinus";
+            radioButtonMinus.Size = new Size(102, 19);
+            radioButtonMinus.TabIndex = 11;
+            radioButtonMinus.TabStop = true;
+            radioButtonMinus.Text = "Вычитание (-)";
+            radioButtonMinus.UseVisualStyleBackColor = true;
             // 
             // textBoxValueTo
             // 
@@ -177,6 +218,7 @@
             // groupBoxTask
             // 
             groupBoxTask.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBoxTask.Controls.Add(labelTourNumber);
             groupBoxTask.Controls.Add(labelCheckResult);
             groupBoxTask.Controls.Add(labelHint);
             groupBoxTask.Controls.Add(buttonStart);
@@ -194,6 +236,15 @@
             groupBoxTask.TabIndex = 1;
             groupBoxTask.TabStop = false;
             groupBoxTask.Text = "Задание";
+            // 
+            // labelTourNumber
+            // 
+            labelTourNumber.AutoSize = true;
+            labelTourNumber.Location = new Point(833, 18);
+            labelTourNumber.Name = "labelTourNumber";
+            labelTourNumber.Size = new Size(0, 15);
+            labelTourNumber.TabIndex = 6;
+            labelTourNumber.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // labelCheckResult
             // 
@@ -308,11 +359,22 @@
             textBoxTestresult.TextAlign = HorizontalAlignment.Center;
             textBoxTestresult.Visible = false;
             // 
+            // pictureBoxForChild
+            // 
+            pictureBoxForChild.Location = new Point(273, 312);
+            pictureBoxForChild.Name = "pictureBoxForChild";
+            pictureBoxForChild.Size = new Size(616, 379);
+            pictureBoxForChild.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxForChild.TabIndex = 3;
+            pictureBoxForChild.TabStop = false;
+            pictureBoxForChild.Visible = false;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1297, 715);
+            Controls.Add(pictureBoxForChild);
             Controls.Add(textBoxTestresult);
             Controls.Add(groupBoxTask);
             Controls.Add(groupBoxOptions);
@@ -321,8 +383,11 @@
             Text = "Математика для ребенка";
             groupBoxOptions.ResumeLayout(false);
             groupBoxOptions.PerformLayout();
+            groupBoxOperation.ResumeLayout(false);
+            groupBoxOperation.PerformLayout();
             groupBoxTask.ResumeLayout(false);
             groupBoxTask.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxForChild).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -352,5 +417,10 @@
         private Label labelValueRangeFrom;
         private TextBox textBoxValueTo;
         private Label labelValueRangeTo;
+        private RadioButton radioButtonMinus;
+        private RadioButton radioButtonSum;
+        private GroupBox groupBoxOperation;
+        private PictureBox pictureBoxForChild;
+        private Label labelTourNumber;
     }
 }
