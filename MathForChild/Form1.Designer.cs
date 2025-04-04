@@ -30,6 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             groupBoxOptions = new GroupBox();
+            textBoxCartoonLink = new TextBox();
+            checkBoxCartoonLink = new CheckBox();
             groupBoxOperation = new GroupBox();
             radioButtonSum = new RadioButton();
             radioButtonMinus = new RadioButton();
@@ -57,6 +59,7 @@
             timer1 = new System.Windows.Forms.Timer(components);
             textBoxTestresult = new TextBox();
             pictureBoxForChild = new PictureBox();
+            buttonCartoonStart = new Button();
             groupBoxOptions.SuspendLayout();
             groupBoxOperation.SuspendLayout();
             groupBoxTask.SuspendLayout();
@@ -66,6 +69,8 @@
             // groupBoxOptions
             // 
             groupBoxOptions.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBoxOptions.Controls.Add(textBoxCartoonLink);
+            groupBoxOptions.Controls.Add(checkBoxCartoonLink);
             groupBoxOptions.Controls.Add(groupBoxOperation);
             groupBoxOptions.Controls.Add(textBoxValueTo);
             groupBoxOptions.Controls.Add(labelValueRangeTo);
@@ -86,11 +91,30 @@
             groupBoxOptions.TabStop = false;
             groupBoxOptions.Text = "Настройки";
             // 
+            // textBoxCartoonLink
+            // 
+            textBoxCartoonLink.Location = new Point(439, 64);
+            textBoxCartoonLink.Name = "textBoxCartoonLink";
+            textBoxCartoonLink.Size = new Size(450, 23);
+            textBoxCartoonLink.TabIndex = 14;
+            textBoxCartoonLink.Visible = false;
+            // 
+            // checkBoxCartoonLink
+            // 
+            checkBoxCartoonLink.AutoSize = true;
+            checkBoxCartoonLink.Location = new Point(232, 66);
+            checkBoxCartoonLink.Name = "checkBoxCartoonLink";
+            checkBoxCartoonLink.Size = new Size(201, 19);
+            checkBoxCartoonLink.TabIndex = 13;
+            checkBoxCartoonLink.Text = "Поставить другой мультфильм:";
+            checkBoxCartoonLink.UseVisualStyleBackColor = true;
+            checkBoxCartoonLink.CheckedChanged += checkBoxCartoonLink_CheckedChanged;
+            // 
             // groupBoxOperation
             // 
             groupBoxOperation.Controls.Add(radioButtonSum);
             groupBoxOperation.Controls.Add(radioButtonMinus);
-            groupBoxOperation.Location = new Point(843, 11);
+            groupBoxOperation.Location = new Point(895, 12);
             groupBoxOperation.Name = "groupBoxOperation";
             groupBoxOperation.Size = new Size(130, 77);
             groupBoxOperation.TabIndex = 12;
@@ -100,6 +124,7 @@
             // radioButtonSum
             // 
             radioButtonSum.AutoSize = true;
+            radioButtonSum.Checked = true;
             radioButtonSum.Location = new Point(6, 22);
             radioButtonSum.Name = "radioButtonSum";
             radioButtonSum.Size = new Size(101, 19);
@@ -115,13 +140,12 @@
             radioButtonMinus.Name = "radioButtonMinus";
             radioButtonMinus.Size = new Size(102, 19);
             radioButtonMinus.TabIndex = 11;
-            radioButtonMinus.TabStop = true;
             radioButtonMinus.Text = "Вычитание (-)";
             radioButtonMinus.UseVisualStyleBackColor = true;
             // 
             // textBoxValueTo
             // 
-            textBoxValueTo.Location = new Point(726, 31);
+            textBoxValueTo.Location = new Point(783, 19);
             textBoxValueTo.Margin = new Padding(3, 2, 3, 2);
             textBoxValueTo.Name = "textBoxValueTo";
             textBoxValueTo.Size = new Size(45, 23);
@@ -131,7 +155,7 @@
             // labelValueRangeTo
             // 
             labelValueRangeTo.AutoSize = true;
-            labelValueRangeTo.Location = new Point(704, 36);
+            labelValueRangeTo.Location = new Point(761, 24);
             labelValueRangeTo.Name = "labelValueRangeTo";
             labelValueRangeTo.Size = new Size(20, 15);
             labelValueRangeTo.TabIndex = 8;
@@ -139,7 +163,7 @@
             // 
             // textBoxValueFrom
             // 
-            textBoxValueFrom.Location = new Point(657, 31);
+            textBoxValueFrom.Location = new Point(714, 19);
             textBoxValueFrom.Margin = new Padding(3, 2, 3, 2);
             textBoxValueFrom.Name = "textBoxValueFrom";
             textBoxValueFrom.Size = new Size(45, 23);
@@ -149,7 +173,7 @@
             // labelValueRangeFrom
             // 
             labelValueRangeFrom.AutoSize = true;
-            labelValueRangeFrom.Location = new Point(589, 36);
+            labelValueRangeFrom.Location = new Point(646, 24);
             labelValueRangeFrom.Name = "labelValueRangeFrom";
             labelValueRangeFrom.Size = new Size(66, 15);
             labelValueRangeFrom.TabIndex = 6;
@@ -157,7 +181,7 @@
             // 
             // textBoxTimeBetwenTours
             // 
-            textBoxTimeBetwenTours.Location = new Point(497, 31);
+            textBoxTimeBetwenTours.Location = new Point(554, 19);
             textBoxTimeBetwenTours.Margin = new Padding(3, 2, 3, 2);
             textBoxTimeBetwenTours.Name = "textBoxTimeBetwenTours";
             textBoxTimeBetwenTours.Size = new Size(45, 23);
@@ -167,7 +191,7 @@
             // labelTimeBetweenTours
             // 
             labelTimeBetweenTours.AutoSize = true;
-            labelTimeBetweenTours.Location = new Point(350, 34);
+            labelTimeBetweenTours.Location = new Point(407, 22);
             labelTimeBetweenTours.Name = "labelTimeBetweenTours";
             labelTimeBetweenTours.Size = new Size(141, 15);
             labelTimeBetweenTours.TabIndex = 4;
@@ -175,7 +199,7 @@
             // 
             // textBoxTourCount
             // 
-            textBoxTourCount.Location = new Point(274, 31);
+            textBoxTourCount.Location = new Point(331, 19);
             textBoxTourCount.Margin = new Padding(3, 2, 3, 2);
             textBoxTourCount.Name = "textBoxTourCount";
             textBoxTourCount.Size = new Size(45, 23);
@@ -186,7 +210,7 @@
             // 
             labelTourCount.AutoSize = true;
             labelTourCount.ImageAlign = ContentAlignment.MiddleRight;
-            labelTourCount.Location = new Point(182, 33);
+            labelTourCount.Location = new Point(239, 21);
             labelTourCount.Name = "labelTourCount";
             labelTourCount.Size = new Size(86, 15);
             labelTourCount.TabIndex = 2;
@@ -194,10 +218,10 @@
             // 
             // buttonOptions
             // 
-            buttonOptions.Location = new Point(28, 66);
+            buttonOptions.Location = new Point(6, 59);
             buttonOptions.Margin = new Padding(3, 2, 3, 2);
             buttonOptions.Name = "buttonOptions";
-            buttonOptions.Size = new Size(126, 22);
+            buttonOptions.Size = new Size(126, 31);
             buttonOptions.TabIndex = 1;
             buttonOptions.Text = "Применить";
             buttonOptions.UseVisualStyleBackColor = true;
@@ -206,7 +230,7 @@
             // checkBoxHintShow
             // 
             checkBoxHintShow.AutoSize = true;
-            checkBoxHintShow.Location = new Point(28, 30);
+            checkBoxHintShow.Location = new Point(85, 18);
             checkBoxHintShow.Margin = new Padding(3, 2, 3, 2);
             checkBoxHintShow.Name = "checkBoxHintShow";
             checkBoxHintShow.Size = new Size(128, 19);
@@ -361,19 +385,32 @@
             // 
             // pictureBoxForChild
             // 
-            pictureBoxForChild.Location = new Point(273, 312);
+            pictureBoxForChild.Location = new Point(28, 291);
             pictureBoxForChild.Name = "pictureBoxForChild";
-            pictureBoxForChild.Size = new Size(616, 379);
+            pictureBoxForChild.Size = new Size(861, 400);
             pictureBoxForChild.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxForChild.TabIndex = 3;
             pictureBoxForChild.TabStop = false;
             pictureBoxForChild.Visible = false;
+            // 
+            // buttonCartoonStart
+            // 
+            buttonCartoonStart.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonCartoonStart.Location = new Point(926, 312);
+            buttonCartoonStart.Name = "buttonCartoonStart";
+            buttonCartoonStart.Size = new Size(306, 81);
+            buttonCartoonStart.TabIndex = 4;
+            buttonCartoonStart.Text = "Посмотреть мультфильм";
+            buttonCartoonStart.UseVisualStyleBackColor = true;
+            buttonCartoonStart.Visible = false;
+            buttonCartoonStart.Click += buttonCartoonStart_Click;
             // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1297, 715);
+            Controls.Add(buttonCartoonStart);
             Controls.Add(pictureBoxForChild);
             Controls.Add(textBoxTestresult);
             Controls.Add(groupBoxTask);
@@ -422,5 +459,8 @@
         private GroupBox groupBoxOperation;
         private PictureBox pictureBoxForChild;
         private Label labelTourNumber;
+        private Button buttonCartoonStart;
+        private TextBox textBoxCartoonLink;
+        private CheckBox checkBoxCartoonLink;
     }
 }

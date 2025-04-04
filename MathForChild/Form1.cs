@@ -1,4 +1,6 @@
 using Microsoft.VisualBasic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 
 namespace MathForChild
@@ -23,9 +25,10 @@ namespace MathForChild
         private string? hintNum2;
         private string? operationChar;
         private string picGold = "gold.gif";
-        private string picSilver= "silver.gif";
+        private string picSilver = "silver.gif";
         private string picBronze = "bronze.gif";
         private string picStupid = "stupid.gif";
+        public string url;
 
         public FormMain()
         {
@@ -43,7 +46,7 @@ namespace MathForChild
         //Кнопка "Старт/Заново"
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            iteration = 1;            
+            iteration = 1;
 
             wrightAnswer = 0;
             wrongAnswer = 0;
@@ -59,7 +62,6 @@ namespace MathForChild
                 operationChar = "-";
                 labelCharOperation.Text = operationChar;
             }
-
             Clear();
             Execute();
         }
@@ -92,12 +94,34 @@ namespace MathForChild
             valueFrom = 0;
             valueTo = 10;
             SetValueIntervalForRandom();
+            urlInput();
+        }
+        //Кнопка "Посмотреть мультфильм"
+        private void buttonCartoonStart_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+            }
+            catch (Exception)
+            {
+                MessageBox.Show($"Такого адреса не существует...{Environment.NewLine}" +
+                    $"Будет запущен сайт По умолчанию...");
+                url = "https://rutube.ru/search/?suggest=1&query=мармеладный%20мишка";
+                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+            }
         }
 
         //Чек-бокс "Показать подсказу"
         private void checkBoxHintShow_CheckedChanged(object sender, EventArgs e)
         {
             labelHint.Visible = true;
+        }
+
+        //Чек-бокс "Поставить другой мультфильм:"
+        private void checkBoxCartoonLink_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxCartoonLink.Visible = true;
         }
 
         /// <summary>
@@ -112,12 +136,12 @@ namespace MathForChild
             {
                 labelTourNumber.Text = $"{iteration} / {tour}";
                 Random rnd = new Random();
-                if (operationChar=="+")
+                if (operationChar == "+")
                 {
                     num1 = (uint)rnd.Next((int)valueFrom, (int)valueTo);
                     num2 = (uint)rnd.Next((int)valueFrom, (int)valueTo);
                 }
-                if (operationChar=="-")
+                if (operationChar == "-")
                 {
                     num2 = valueTo;
                     num1 = (uint)rnd.Next((int)valueFrom, (int)valueTo);
@@ -157,7 +181,10 @@ namespace MathForChild
             hintNum2 = string.Empty;
             textBoxTestresult.Clear();
             textBoxTestresult.Visible = false;
-            pictureBoxForChild.Visible = false;            
+            pictureBoxForChild.Visible = false;
+            buttonCartoonStart.Visible = false;
+            textBoxCartoonLink.Visible = false;
+            checkBoxCartoonLink.Checked = false;
 
             if (checkBoxHintShow.Checked) labelHint.Visible = true;
             else labelHint.Visible = false;
@@ -171,11 +198,11 @@ namespace MathForChild
             {
                 if (uint.TryParse(textBoxResult.Text, out uint MyRes))
                 {
-                    if (operationChar=="+")
+                    if (operationChar == "+")
                     {
                         result = Sum(num1, num2);
                     }
-                    if (operationChar=="-")
+                    if (operationChar == "-")
                     {
                         result = Minus(num1, num2);
                     }
@@ -248,14 +275,22 @@ namespace MathForChild
         {
             try
             {
-                if (uint.TryParse(textBoxTourCount.Text, out uint tourCount))
+                if (textBoxTourCount.Text == string.Empty)
                 {
-                    tour = tourCount;
+                    tour = 10;
                     VisibleItems(false);
                 }
                 else
                 {
-                    throw new FormatException();
+                    if (uint.TryParse(textBoxTourCount.Text, out uint tourCount))
+                    {
+                        tour = tourCount;
+                        VisibleItems(false);
+                    }
+                    else
+                    {
+                        throw new FormatException();
+                    }
                 }
             }
             catch (FormatException)
@@ -278,12 +313,13 @@ namespace MathForChild
                 $"Неправильных ответов: {wrongAnswer}{Environment.NewLine}" +
                 $"ИТОГ: {procentResult.ToString("F0")}%";
 
-            if (procentResult>=90)
+            if (procentResult >= 90)
             {
                 pictureBoxForChild.Visible = true;
                 pictureBoxForChild.Image = Image.FromFile(picGold);
+                buttonCartoonStart.Visible = true;
             }
-            else if(procentResult>=70 && procentResult < 90)
+            else if (procentResult >= 70 && procentResult < 90)
             {
                 pictureBoxForChild.Visible = true;
                 pictureBoxForChild.Image = Image.FromFile(picSilver);
@@ -410,5 +446,18 @@ namespace MathForChild
             }
         }
 
+        private void urlInput()
+        {
+            if (textBoxCartoonLink.Text==string.Empty)
+            {
+                url = "https://rutube.ru/search/?suggest=1&query=мармеладный%20мишка";
+            }
+            else
+            {
+                url = textBoxCartoonLink.Text;               
+            }
+        }
+
+        
     }
 }
