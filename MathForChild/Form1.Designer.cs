@@ -30,6 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             groupBoxOptions = new GroupBox();
+            textBoxValueFrom = new TextBox();
+            labelValueRangeFrom = new Label();
+            textBoxTimeBetwenTours = new TextBox();
+            labelTimeBetweenTours = new Label();
             textBoxTourCount = new TextBox();
             labelTourCount = new Label();
             buttonOptions = new Button();
@@ -46,8 +50,8 @@
             textBoxNum1 = new TextBox();
             timer1 = new System.Windows.Forms.Timer(components);
             textBoxTestresult = new TextBox();
-            labelTimeBetweenTours = new Label();
-            textBoxTimeBetwenTours = new TextBox();
+            labelValueRangeTo = new Label();
+            textBoxValueTo = new TextBox();
             groupBoxOptions.SuspendLayout();
             groupBoxTask.SuspendLayout();
             SuspendLayout();
@@ -55,6 +59,10 @@
             // groupBoxOptions
             // 
             groupBoxOptions.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBoxOptions.Controls.Add(textBoxValueTo);
+            groupBoxOptions.Controls.Add(labelValueRangeTo);
+            groupBoxOptions.Controls.Add(textBoxValueFrom);
+            groupBoxOptions.Controls.Add(labelValueRangeFrom);
             groupBoxOptions.Controls.Add(textBoxTimeBetwenTours);
             groupBoxOptions.Controls.Add(labelTimeBetweenTours);
             groupBoxOptions.Controls.Add(textBoxTourCount);
@@ -69,6 +77,42 @@
             groupBoxOptions.TabIndex = 0;
             groupBoxOptions.TabStop = false;
             groupBoxOptions.Text = "Настройки";
+            // 
+            // textBoxValueFrom
+            // 
+            textBoxValueFrom.Location = new Point(657, 31);
+            textBoxValueFrom.Margin = new Padding(3, 2, 3, 2);
+            textBoxValueFrom.Name = "textBoxValueFrom";
+            textBoxValueFrom.Size = new Size(45, 23);
+            textBoxValueFrom.TabIndex = 7;
+            textBoxValueFrom.TextAlign = HorizontalAlignment.Center;
+            // 
+            // labelValueRangeFrom
+            // 
+            labelValueRangeFrom.AutoSize = true;
+            labelValueRangeFrom.Location = new Point(589, 36);
+            labelValueRangeFrom.Name = "labelValueRangeFrom";
+            labelValueRangeFrom.Size = new Size(66, 15);
+            labelValueRangeFrom.TabIndex = 6;
+            labelValueRangeFrom.Text = "Цифры от:";
+            // 
+            // textBoxTimeBetwenTours
+            // 
+            textBoxTimeBetwenTours.Location = new Point(497, 31);
+            textBoxTimeBetwenTours.Margin = new Padding(3, 2, 3, 2);
+            textBoxTimeBetwenTours.Name = "textBoxTimeBetwenTours";
+            textBoxTimeBetwenTours.Size = new Size(45, 23);
+            textBoxTimeBetwenTours.TabIndex = 5;
+            textBoxTimeBetwenTours.TextAlign = HorizontalAlignment.Center;
+            // 
+            // labelTimeBetweenTours
+            // 
+            labelTimeBetweenTours.AutoSize = true;
+            labelTimeBetweenTours.Location = new Point(350, 34);
+            labelTimeBetweenTours.Name = "labelTimeBetweenTours";
+            labelTimeBetweenTours.Size = new Size(141, 15);
+            labelTimeBetweenTours.TabIndex = 4;
+            labelTimeBetweenTours.Text = "Время между турами(c):";
             // 
             // textBoxTourCount
             // 
@@ -246,23 +290,23 @@
             textBoxTestresult.TextAlign = HorizontalAlignment.Center;
             textBoxTestresult.Visible = false;
             // 
-            // labelTimeBetweenTours
+            // labelValueRangeTo
             // 
-            labelTimeBetweenTours.AutoSize = true;
-            labelTimeBetweenTours.Location = new Point(350, 34);
-            labelTimeBetweenTours.Name = "labelTimeBetweenTours";
-            labelTimeBetweenTours.Size = new Size(141, 15);
-            labelTimeBetweenTours.TabIndex = 4;
-            labelTimeBetweenTours.Text = "Время между турами(c):";
+            labelValueRangeTo.AutoSize = true;
+            labelValueRangeTo.Location = new Point(704, 36);
+            labelValueRangeTo.Name = "labelValueRangeTo";
+            labelValueRangeTo.Size = new Size(20, 15);
+            labelValueRangeTo.TabIndex = 8;
+            labelValueRangeTo.Text = "до";
             // 
-            // textBoxTimeBetwenTours
+            // textBoxValueTo
             // 
-            textBoxTimeBetwenTours.Location = new Point(497, 31);
-            textBoxTimeBetwenTours.Margin = new Padding(3, 2, 3, 2);
-            textBoxTimeBetwenTours.Name = "textBoxTimeBetwenTours";
-            textBoxTimeBetwenTours.Size = new Size(45, 23);
-            textBoxTimeBetwenTours.TabIndex = 5;
-            textBoxTimeBetwenTours.TextAlign = HorizontalAlignment.Center;
+            textBoxValueTo.Location = new Point(726, 31);
+            textBoxValueTo.Margin = new Padding(3, 2, 3, 2);
+            textBoxValueTo.Name = "textBoxValueTo";
+            textBoxValueTo.Size = new Size(45, 23);
+            textBoxValueTo.TabIndex = 9;
+            textBoxValueTo.TextAlign = HorizontalAlignment.Center;
             // 
             // FormMain
             // 
@@ -304,5 +348,9 @@
         private TextBox textBoxTestresult;
         private TextBox textBoxTimeBetwenTours;
         private Label labelTimeBetweenTours;
+        private TextBox textBoxValueFrom;
+        private Label labelValueRangeFrom;
+        private TextBox textBoxValueTo;
+        private Label labelValueRangeTo;
     }
 }

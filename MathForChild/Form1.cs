@@ -13,6 +13,8 @@ namespace MathForChild
         private uint wrightAnswer;
         private uint wrongAnswer;
         private int timeBetweenTours;
+        private uint valueFrom;
+        private uint valueTo;
 
         double procentResult;
 
@@ -73,6 +75,14 @@ namespace MathForChild
         private void buttonOptions_Click(object sender, EventArgs e)
         {
             TourCount();
+            valueFrom = 0;
+            valueTo = 10;
+            SetValueIntervalForRandom();
+        }
+        //Чек-бокс "Показать подсказу"
+        private void checkBoxHintShow_CheckedChanged(object sender, EventArgs e)
+        {
+            labelHint.Visible = true;
         }
 
         /// <summary>
@@ -87,19 +97,21 @@ namespace MathForChild
             {
                 Random rnd = new Random();
 
-                num1 = (uint)rnd.Next(0, 10);
-                num2 = (uint)rnd.Next(0, 10);
+                num1 = (uint)rnd.Next((int)valueFrom, (int)valueTo);
+                num2 = (uint)rnd.Next((int)valueFrom, (int)valueTo);
 
                 textBoxNum1.Text = num1.ToString();
                 textBoxNum2.Text = num2.ToString();
                 textBoxResult.Focus();
 
                 labelHint.Text = $"{ShowHintNum1()} + {ShowHintNum2()}";
-                
+
             }
             else
             {
                 VisibleItems(true);
+                textBoxValueFrom.Clear();
+                textBoxValueTo.Clear();
                 textBoxTestresult.Visible = true;
                 ShowTestResult();
             }
@@ -119,6 +131,7 @@ namespace MathForChild
             textBoxTestresult.Clear();
             textBoxTestresult.Visible = false;
 
+
             if (checkBoxHintShow.Checked) labelHint.Visible = true;
             else labelHint.Visible = false;
 
@@ -137,8 +150,6 @@ namespace MathForChild
                     iteration++;
                     if (MyRes == result) return true;
                     else return false;
-                    
-
                 }
                 else
                 {
@@ -178,12 +189,6 @@ namespace MathForChild
             buttonOptions.Visible = vis;
             labelTourCount.Visible = vis;
             textBoxTourCount.Visible = vis;
-        }
-
-        //Чек-бокс "Показать подсказу"
-        private void checkBoxHintShow_CheckedChanged(object sender, EventArgs e)
-        {
-                labelHint.Visible = true;
         }
 
         //Метод "Показать строку подсказки для числа 1"
@@ -234,19 +239,20 @@ namespace MathForChild
         //Метод вывода в textBox результатов всего теста
         private void ShowTestResult()
         {
-            procentResult = ((double)wrightAnswer / (double)tour)*100;
+            procentResult = ((double)wrightAnswer / (double)tour) * 100;
             textBoxTestresult.Text = $"Результаты:{Environment.NewLine}" +
                 $"Проведено туров: {tour}{Environment.NewLine}" +
                 $"Правильных ответов: {wrightAnswer}{Environment.NewLine}" +
                 $"Неправильных ответов: {wrongAnswer}{Environment.NewLine}" +
                 $"ИТОГ: {procentResult.ToString("F0")}%";
         }
+        
         //Метод установки времени между турами
         private void TimeSet()
         {
             try
             {
-                if (textBoxTimeBetwenTours.Text==string.Empty)
+                if (textBoxTimeBetwenTours.Text == string.Empty)
                 {
                     timeBetweenTours = 2000;
                     timer1.Interval = timeBetweenTours;
@@ -255,7 +261,7 @@ namespace MathForChild
                 {
                     if (int.TryParse(textBoxTimeBetwenTours.Text, out int time))
                     {
-                        timeBetweenTours = time*1000;
+                        timeBetweenTours = time * 1000;
                         timer1.Interval = timeBetweenTours;
                     }
                     else
@@ -267,6 +273,83 @@ namespace MathForChild
             catch (FormatException)
             {
                 MessageBox.Show("Введите корректные данные...");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        //Метод интервала случайных значений
+        private void SetValueIntervalForRandom()
+        {
+            try
+            {
+                //Ввод значения "ОТ"
+                if (textBoxValueFrom.Text==string.Empty)
+                {
+                    valueFrom = 0;
+                }
+                else
+                {
+                    if (uint.TryParse(textBoxValueFrom.Text, out uint valFrom))
+                    {
+                        valueFrom = valFrom;
+                    }
+                    else
+                    {
+                        valueFrom = 0;
+                        throw new FormatException();
+                    }
+                }
+                ///
+
+                //Ввод значения "ДО"
+                if (textBoxValueTo.Text == string.Empty)
+                {
+                    valueTo = 10;
+                }
+                else
+                {
+                    if (uint.TryParse(textBoxValueTo.Text, out uint valTo))
+                    {
+                        if (valueFrom>=valTo)
+                        {
+                            valueFrom = 0;
+                            valueTo = 10;
+                            throw new FormatException();
+                        }
+                        else
+                        {
+                            if (valTo>20)
+                            {
+                                valueFrom = 0;
+                                valueTo = 10;
+                                throw new ArgumentOutOfRangeException();
+                            }
+                            else
+                            {
+                                valueTo = valTo;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        valueTo = 10;
+                        throw new FormatException();
+                    }
+                }
+                ///
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show($"Введены некорректные данные...{Environment.NewLine}" +
+                    $"Установлено значение По умолчанию...");
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show($"Максимальное число долно быть не больше 20...{Environment.NewLine}" +
+                                    $"Установлено значение По умолчанию...");
             }
             catch (Exception ex)
             {
