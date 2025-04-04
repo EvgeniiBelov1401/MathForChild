@@ -62,13 +62,16 @@ namespace MathForChild
                 operationChar = "-";
                 labelCharOperation.Text = operationChar;
             }
+            buttonStart.Enabled = false;
+            buttonCalculate.Enabled = true;
+            textBoxResult.Enabled = true;
             Clear();
             Execute();
         }
 
         //Кнопка "Проверить результат"
         private void buttonCalculate_Click(object sender, EventArgs e)
-        {
+        {            
             TimeSet();
             if (InputData())
             {
@@ -95,6 +98,7 @@ namespace MathForChild
             valueTo = 10;
             SetValueIntervalForRandom();
             urlInput();
+            buttonStart.Enabled = true;            
         }
         //Кнопка "Посмотреть мультфильм"
         private void buttonCartoonStart_Click(object sender, EventArgs e)
@@ -165,6 +169,9 @@ namespace MathForChild
                 textBoxTestresult.Visible = true;
                 ShowTestResult();
                 labelTourNumber.Text = string.Empty;
+                buttonStart.Enabled = false;
+                buttonCalculate.Enabled = false;
+                textBoxResult.Enabled = false;
             }
         }
 

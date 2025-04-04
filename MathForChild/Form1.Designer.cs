@@ -291,18 +291,20 @@
             // 
             // buttonStart
             // 
+            buttonStart.Enabled = false;
             buttonStart.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             buttonStart.Location = new Point(14, 24);
             buttonStart.Margin = new Padding(3, 2, 3, 2);
             buttonStart.Name = "buttonStart";
             buttonStart.Size = new Size(203, 36);
             buttonStart.TabIndex = 0;
-            buttonStart.Text = "Старт/Заново";
+            buttonStart.Text = "Старт";
             buttonStart.UseVisualStyleBackColor = true;
             buttonStart.Click += buttonStart_Click;
             // 
             // buttonCalculate
             // 
+            buttonCalculate.Enabled = false;
             buttonCalculate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             buttonCalculate.Location = new Point(644, 90);
             buttonCalculate.Margin = new Padding(3, 2, 3, 2);
@@ -337,6 +339,7 @@
             // 
             // textBoxResult
             // 
+            textBoxResult.Enabled = false;
             textBoxResult.Font = new Font("Segoe UI Black", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
             textBoxResult.Location = new Point(665, 54);
             textBoxResult.Margin = new Padding(3, 2, 3, 2);
