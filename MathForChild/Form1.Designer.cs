@@ -60,6 +60,7 @@
             textBoxTestresult = new TextBox();
             pictureBoxForChild = new PictureBox();
             buttonCartoonStart = new Button();
+            toolTip1 = new ToolTip(components);
             groupBoxOptions.SuspendLayout();
             groupBoxOperation.SuspendLayout();
             groupBoxTask.SuspendLayout();
@@ -97,6 +98,7 @@
             textBoxCartoonLink.Name = "textBoxCartoonLink";
             textBoxCartoonLink.Size = new Size(450, 23);
             textBoxCartoonLink.TabIndex = 14;
+            toolTip1.SetToolTip(textBoxCartoonLink, "Введите адрес ссылки");
             textBoxCartoonLink.Visible = false;
             // 
             // checkBoxCartoonLink
@@ -107,6 +109,7 @@
             checkBoxCartoonLink.Size = new Size(201, 19);
             checkBoxCartoonLink.TabIndex = 13;
             checkBoxCartoonLink.Text = "Поставить другой мультфильм:";
+            toolTip1.SetToolTip(checkBoxCartoonLink, "Если оставить пустым, запустится мультфильм Мармеладный мишка");
             checkBoxCartoonLink.UseVisualStyleBackColor = true;
             checkBoxCartoonLink.CheckedChanged += checkBoxCartoonLink_CheckedChanged;
             // 
@@ -120,6 +123,7 @@
             groupBoxOperation.TabIndex = 12;
             groupBoxOperation.TabStop = false;
             groupBoxOperation.Text = "Операции";
+            toolTip1.SetToolTip(groupBoxOperation, "Выбрать операции");
             // 
             // radioButtonSum
             // 
@@ -160,6 +164,7 @@
             labelValueRangeTo.Size = new Size(20, 15);
             labelValueRangeTo.TabIndex = 8;
             labelValueRangeTo.Text = "до";
+            toolTip1.SetToolTip(labelValueRangeTo, "Если поле пустое, значит там 10. Максимальное число 20");
             // 
             // textBoxValueFrom
             // 
@@ -178,6 +183,7 @@
             labelValueRangeFrom.Size = new Size(66, 15);
             labelValueRangeFrom.TabIndex = 6;
             labelValueRangeFrom.Text = "Цифры от:";
+            toolTip1.SetToolTip(labelValueRangeFrom, "Если пустое, значит там 0");
             // 
             // textBoxTimeBetwenTours
             // 
@@ -196,6 +202,7 @@
             labelTimeBetweenTours.Size = new Size(141, 15);
             labelTimeBetweenTours.TabIndex = 4;
             labelTimeBetweenTours.Text = "Время между турами(c):";
+            toolTip1.SetToolTip(labelTimeBetweenTours, "Время, для того, чтобы посмотреть, в чем ты ошибся. Если оставить пустым, время - 3 секунды\r\n");
             // 
             // textBoxTourCount
             // 
@@ -215,6 +222,7 @@
             labelTourCount.Size = new Size(86, 15);
             labelTourCount.TabIndex = 2;
             labelTourCount.Text = "Кол-во туров: ";
+            toolTip1.SetToolTip(labelTourCount, "Если поле оставить пустым, туров будет 10");
             // 
             // buttonOptions
             // 
@@ -224,6 +232,7 @@
             buttonOptions.Size = new Size(126, 31);
             buttonOptions.TabIndex = 1;
             buttonOptions.Text = "Применить";
+            toolTip1.SetToolTip(buttonOptions, "Применить настройки");
             buttonOptions.UseVisualStyleBackColor = true;
             buttonOptions.Click += buttonOptions_Click;
             // 
@@ -236,6 +245,7 @@
             checkBoxHintShow.Size = new Size(128, 19);
             checkBoxHintShow.TabIndex = 0;
             checkBoxHintShow.Text = "Показать подсказу";
+            toolTip1.SetToolTip(checkBoxHintShow, "Если включить, отобразится подсказка в виде сердечек");
             checkBoxHintShow.UseVisualStyleBackColor = true;
             checkBoxHintShow.CheckedChanged += checkBoxHintShow_CheckedChanged;
             // 
@@ -299,6 +309,7 @@
             buttonStart.Size = new Size(203, 36);
             buttonStart.TabIndex = 0;
             buttonStart.Text = "Старт";
+            toolTip1.SetToolTip(buttonStart, "Начать считать");
             buttonStart.UseVisualStyleBackColor = true;
             buttonStart.Click += buttonStart_Click;
             // 
@@ -312,6 +323,7 @@
             buttonCalculate.Size = new Size(203, 36);
             buttonCalculate.TabIndex = 4;
             buttonCalculate.Text = "Проверить результат";
+            toolTip1.SetToolTip(buttonCalculate, "Сравнить введенный результат с правдой");
             buttonCalculate.UseVisualStyleBackColor = true;
             buttonCalculate.Click += buttonCalculate_Click;
             // 
@@ -347,6 +359,7 @@
             textBoxResult.Size = new Size(168, 32);
             textBoxResult.TabIndex = 3;
             textBoxResult.TextAlign = HorizontalAlignment.Center;
+            toolTip1.SetToolTip(textBoxResult, "Введите результат ваших подсчетов");
             // 
             // textBoxNum2
             // 
@@ -358,6 +371,7 @@
             textBoxNum2.Size = new Size(168, 32);
             textBoxNum2.TabIndex = 2;
             textBoxNum2.TextAlign = HorizontalAlignment.Center;
+            toolTip1.SetToolTip(textBoxNum2, "Здесь выпадает случайное число");
             // 
             // textBoxNum1
             // 
@@ -369,6 +383,7 @@
             textBoxNum1.Size = new Size(168, 32);
             textBoxNum1.TabIndex = 1;
             textBoxNum1.TextAlign = HorizontalAlignment.Center;
+            toolTip1.SetToolTip(textBoxNum1, "Здесь выпадает случайное число");
             // 
             // timer1
             // 
@@ -384,6 +399,7 @@
             textBoxTestresult.Size = new Size(309, 129);
             textBoxTestresult.TabIndex = 2;
             textBoxTestresult.TextAlign = HorizontalAlignment.Center;
+            toolTip1.SetToolTip(textBoxTestresult, "Твой результат");
             textBoxTestresult.Visible = false;
             // 
             // pictureBoxForChild
@@ -404,6 +420,7 @@
             buttonCartoonStart.Size = new Size(306, 81);
             buttonCartoonStart.TabIndex = 4;
             buttonCartoonStart.Text = "Посмотреть мультфильм";
+            toolTip1.SetToolTip(buttonCartoonStart, "ТЫ МОЛОДЕЦ!!! ТЕПЕРЬ ТЫ МОЖЕШЬ ПОСМОТРЕТЬ МУЛЬТФИЛЬМ");
             buttonCartoonStart.UseVisualStyleBackColor = true;
             buttonCartoonStart.Visible = false;
             buttonCartoonStart.Click += buttonCartoonStart_Click;
@@ -465,5 +482,6 @@
         private Button buttonCartoonStart;
         private TextBox textBoxCartoonLink;
         private CheckBox checkBoxCartoonLink;
+        private ToolTip toolTip1;
     }
 }
