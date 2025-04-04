@@ -46,6 +46,8 @@
             textBoxNum1 = new TextBox();
             timer1 = new System.Windows.Forms.Timer(components);
             textBoxTestresult = new TextBox();
+            labelTimeBetweenTours = new Label();
+            textBoxTimeBetwenTours = new TextBox();
             groupBoxOptions.SuspendLayout();
             groupBoxTask.SuspendLayout();
             SuspendLayout();
@@ -53,11 +55,13 @@
             // groupBoxOptions
             // 
             groupBoxOptions.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBoxOptions.Controls.Add(textBoxTimeBetwenTours);
+            groupBoxOptions.Controls.Add(labelTimeBetweenTours);
             groupBoxOptions.Controls.Add(textBoxTourCount);
             groupBoxOptions.Controls.Add(labelTourCount);
             groupBoxOptions.Controls.Add(buttonOptions);
             groupBoxOptions.Controls.Add(checkBoxHintShow);
-            groupBoxOptions.Location = new Point(21, 24);
+            groupBoxOptions.Location = new Point(28, 28);
             groupBoxOptions.Margin = new Padding(3, 2, 3, 2);
             groupBoxOptions.Name = "groupBoxOptions";
             groupBoxOptions.Padding = new Padding(3, 2, 3, 2);
@@ -68,7 +72,7 @@
             // 
             // textBoxTourCount
             // 
-            textBoxTourCount.Location = new Point(274, 28);
+            textBoxTourCount.Location = new Point(274, 31);
             textBoxTourCount.Margin = new Padding(3, 2, 3, 2);
             textBoxTourCount.Name = "textBoxTourCount";
             textBoxTourCount.Size = new Size(45, 23);
@@ -79,7 +83,7 @@
             // 
             labelTourCount.AutoSize = true;
             labelTourCount.ImageAlign = ContentAlignment.MiddleRight;
-            labelTourCount.Location = new Point(182, 30);
+            labelTourCount.Location = new Point(182, 33);
             labelTourCount.Name = "labelTourCount";
             labelTourCount.Size = new Size(86, 15);
             labelTourCount.TabIndex = 2;
@@ -120,7 +124,7 @@
             groupBoxTask.Controls.Add(textBoxResult);
             groupBoxTask.Controls.Add(textBoxNum2);
             groupBoxTask.Controls.Add(textBoxNum1);
-            groupBoxTask.Location = new Point(28, 126);
+            groupBoxTask.Location = new Point(28, 148);
             groupBoxTask.Margin = new Padding(3, 2, 3, 2);
             groupBoxTask.Name = "groupBoxTask";
             groupBoxTask.Padding = new Padding(3, 2, 3, 2);
@@ -234,13 +238,31 @@
             // 
             textBoxTestresult.BackColor = SystemColors.Control;
             textBoxTestresult.Font = new Font("Segoe UI Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            textBoxTestresult.Location = new Point(923, 135);
+            textBoxTestresult.Location = new Point(923, 155);
             textBoxTestresult.Multiline = true;
             textBoxTestresult.Name = "textBoxTestresult";
             textBoxTestresult.Size = new Size(309, 129);
             textBoxTestresult.TabIndex = 2;
             textBoxTestresult.TextAlign = HorizontalAlignment.Center;
             textBoxTestresult.Visible = false;
+            // 
+            // labelTimeBetweenTours
+            // 
+            labelTimeBetweenTours.AutoSize = true;
+            labelTimeBetweenTours.Location = new Point(350, 34);
+            labelTimeBetweenTours.Name = "labelTimeBetweenTours";
+            labelTimeBetweenTours.Size = new Size(141, 15);
+            labelTimeBetweenTours.TabIndex = 4;
+            labelTimeBetweenTours.Text = "Время между турами(c):";
+            // 
+            // textBoxTimeBetwenTours
+            // 
+            textBoxTimeBetwenTours.Location = new Point(497, 31);
+            textBoxTimeBetwenTours.Margin = new Padding(3, 2, 3, 2);
+            textBoxTimeBetwenTours.Name = "textBoxTimeBetwenTours";
+            textBoxTimeBetwenTours.Size = new Size(45, 23);
+            textBoxTimeBetwenTours.TabIndex = 5;
+            textBoxTimeBetwenTours.TextAlign = HorizontalAlignment.Center;
             // 
             // FormMain
             // 
@@ -280,5 +302,7 @@
         private Label labelTourCount;
         private TextBox textBoxTourCount;
         private TextBox textBoxTestresult;
+        private TextBox textBoxTimeBetwenTours;
+        private Label labelTimeBetweenTours;
     }
 }

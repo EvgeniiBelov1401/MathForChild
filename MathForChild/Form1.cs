@@ -12,6 +12,7 @@ namespace MathForChild
         private uint tour;
         private uint wrightAnswer;
         private uint wrongAnswer;
+        private int timeBetweenTours;
 
         double procentResult;
 
@@ -21,7 +22,7 @@ namespace MathForChild
         public FormMain()
         {
             InitializeComponent();
-            timer1.Interval = 3000;
+            //timer1.Interval = 3000;
             timer1.Tick += Timer1_Tick;
         }
         //Таймер
@@ -50,7 +51,7 @@ namespace MathForChild
         //Кнопка "Проверить результат"
         private void buttonCalculate_Click(object sender, EventArgs e)
         {
-
+            TimeSet();
             if (InputData())
             {
                 textBoxResult.BackColor = Color.Green;
@@ -66,14 +67,12 @@ namespace MathForChild
                 wrongAnswer++;
             }
             timer1.Start();
-
         }
 
         //Кнопка "Применить" к настройкам
         private void buttonOptions_Click(object sender, EventArgs e)
         {
             TourCount();
-
         }
 
         /// <summary>
@@ -242,6 +241,37 @@ namespace MathForChild
                 $"Неправильных ответов: {wrongAnswer}{Environment.NewLine}" +
                 $"ИТОГ: {procentResult.ToString("F0")}%";
         }
-
+        //Метод установки времени между турами
+        private void TimeSet()
+        {
+            try
+            {
+                if (textBoxTimeBetwenTours.Text==string.Empty)
+                {
+                    timeBetweenTours = 2000;
+                    timer1.Interval = timeBetweenTours;
+                }
+                else
+                {
+                    if (int.TryParse(textBoxTimeBetwenTours.Text, out int time))
+                    {
+                        timeBetweenTours = time*1000;
+                        timer1.Interval = timeBetweenTours;
+                    }
+                    else
+                    {
+                        throw new FormatException();
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Введите корректные данные...");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
