@@ -30,6 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             groupBoxOptions = new GroupBox();
+            textBoxValueTo = new TextBox();
+            labelValueRangeTo = new Label();
             textBoxValueFrom = new TextBox();
             labelValueRangeFrom = new Label();
             textBoxTimeBetwenTours = new TextBox();
@@ -50,8 +52,6 @@
             textBoxNum1 = new TextBox();
             timer1 = new System.Windows.Forms.Timer(components);
             textBoxTestresult = new TextBox();
-            labelValueRangeTo = new Label();
-            textBoxValueTo = new TextBox();
             groupBoxOptions.SuspendLayout();
             groupBoxTask.SuspendLayout();
             SuspendLayout();
@@ -77,6 +77,24 @@
             groupBoxOptions.TabIndex = 0;
             groupBoxOptions.TabStop = false;
             groupBoxOptions.Text = "Настройки";
+            // 
+            // textBoxValueTo
+            // 
+            textBoxValueTo.Location = new Point(726, 31);
+            textBoxValueTo.Margin = new Padding(3, 2, 3, 2);
+            textBoxValueTo.Name = "textBoxValueTo";
+            textBoxValueTo.Size = new Size(45, 23);
+            textBoxValueTo.TabIndex = 9;
+            textBoxValueTo.TextAlign = HorizontalAlignment.Center;
+            // 
+            // labelValueRangeTo
+            // 
+            labelValueRangeTo.AutoSize = true;
+            labelValueRangeTo.Location = new Point(704, 36);
+            labelValueRangeTo.Name = "labelValueRangeTo";
+            labelValueRangeTo.Size = new Size(20, 15);
+            labelValueRangeTo.TabIndex = 8;
+            labelValueRangeTo.Text = "до";
             // 
             // textBoxValueFrom
             // 
@@ -289,24 +307,6 @@
             textBoxTestresult.TabIndex = 2;
             textBoxTestresult.TextAlign = HorizontalAlignment.Center;
             textBoxTestresult.Visible = false;
-            // 
-            // labelValueRangeTo
-            // 
-            labelValueRangeTo.AutoSize = true;
-            labelValueRangeTo.Location = new Point(704, 36);
-            labelValueRangeTo.Name = "labelValueRangeTo";
-            labelValueRangeTo.Size = new Size(20, 15);
-            labelValueRangeTo.TabIndex = 8;
-            labelValueRangeTo.Text = "до";
-            // 
-            // textBoxValueTo
-            // 
-            textBoxValueTo.Location = new Point(726, 31);
-            textBoxValueTo.Margin = new Padding(3, 2, 3, 2);
-            textBoxValueTo.Name = "textBoxValueTo";
-            textBoxValueTo.Size = new Size(45, 23);
-            textBoxValueTo.TabIndex = 9;
-            textBoxValueTo.TextAlign = HorizontalAlignment.Center;
             // 
             // FormMain
             // 

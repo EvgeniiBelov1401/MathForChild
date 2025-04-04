@@ -12,28 +12,27 @@ namespace MathForChild
         private uint tour;
         private uint wrightAnswer;
         private uint wrongAnswer;
-        private int timeBetweenTours;
         private uint valueFrom;
         private uint valueTo;
 
-        double procentResult;
+        private int timeBetweenTours;
 
+        double procentResult;
 
         private string? hintNum1;
         private string? hintNum2;
+
         public FormMain()
         {
             InitializeComponent();
-            //timer1.Interval = 3000;
             timer1.Tick += Timer1_Tick;
         }
-        //Таймер
-        private void Timer1_Tick(object sender, EventArgs e)
+
+        //Таймер1
+        private void Timer1_Tick(object? sender, EventArgs e)
         {
             timer1.Stop();
             Execute();
-
-
         }
 
         //Кнопка "Старт/Заново"
@@ -47,7 +46,6 @@ namespace MathForChild
 
             Clear();
             Execute();
-
         }
 
         //Кнопка "Проверить результат"
@@ -58,14 +56,14 @@ namespace MathForChild
             {
                 textBoxResult.BackColor = Color.Green;
                 labelCheckResult.Visible = true;
-                labelCheckResult.Text = "ПРАВИЛЬНО!!!";
+                labelCheckResult.Text = $"ПРАВИЛЬНО!!!";
                 wrightAnswer++;
             }
             else
             {
                 textBoxResult.BackColor = Color.Red;
                 labelCheckResult.Visible = true;
-                labelCheckResult.Text = "НЕПРАВИЛЬНО!!!";
+                labelCheckResult.Text = $"НЕПРАВИЛЬНО!!!";
                 wrongAnswer++;
             }
             timer1.Start();
@@ -79,6 +77,7 @@ namespace MathForChild
             valueTo = 10;
             SetValueIntervalForRandom();
         }
+
         //Чек-бокс "Показать подсказу"
         private void checkBoxHintShow_CheckedChanged(object sender, EventArgs e)
         {
@@ -105,7 +104,6 @@ namespace MathForChild
                 textBoxResult.Focus();
 
                 labelHint.Text = $"{ShowHintNum1()} + {ShowHintNum2()}";
-
             }
             else
             {
@@ -131,10 +129,8 @@ namespace MathForChild
             textBoxTestresult.Clear();
             textBoxTestresult.Visible = false;
 
-
             if (checkBoxHintShow.Checked) labelHint.Visible = true;
             else labelHint.Visible = false;
-
         }
 
         //Метод "Ввод ожидаемого результата"
@@ -166,15 +162,14 @@ namespace MathForChild
                 MessageBox.Show(ex.Message);
                 return false;
             }
-
         }
-
 
         //Метод "Суммирование"
         private uint Sum(uint num1, uint num2)
         {
             return num1 + num2;
         }
+
         //Метод "Вычитание"
         private uint Minus(uint num1, uint num2)
         {
@@ -246,7 +241,7 @@ namespace MathForChild
                 $"Неправильных ответов: {wrongAnswer}{Environment.NewLine}" +
                 $"ИТОГ: {procentResult.ToString("F0")}%";
         }
-        
+
         //Метод установки времени между турами
         private void TimeSet()
         {
@@ -286,7 +281,7 @@ namespace MathForChild
             try
             {
                 //Ввод значения "ОТ"
-                if (textBoxValueFrom.Text==string.Empty)
+                if (textBoxValueFrom.Text == string.Empty)
                 {
                     valueFrom = 0;
                 }
@@ -313,7 +308,7 @@ namespace MathForChild
                 {
                     if (uint.TryParse(textBoxValueTo.Text, out uint valTo))
                     {
-                        if (valueFrom>=valTo)
+                        if (valueFrom >= valTo)
                         {
                             valueFrom = 0;
                             valueTo = 10;
@@ -321,7 +316,7 @@ namespace MathForChild
                         }
                         else
                         {
-                            if (valTo>20)
+                            if (valTo > 20)
                             {
                                 valueFrom = 0;
                                 valueTo = 10;
