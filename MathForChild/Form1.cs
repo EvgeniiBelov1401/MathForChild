@@ -24,10 +24,10 @@ namespace MathForChild
         private string? hintNum1;
         private string? hintNum2;
         private string? operationChar;
-        private string picGold = "gold.gif";
-        private string picSilver = "silver.gif";
-        private string picBronze = "bronze.gif";
-        private string picStupid = "stupid.gif";
+        private string picGold = @"Pictures\gold.gif";
+        private string picSilver = @"Pictures\silver.gif";
+        private string picBronze = @"Pictures\bronze.gif";
+        private string picStupid = @"Pictures\stupid.gif";
         public string? url;
 
         public FormMain()
