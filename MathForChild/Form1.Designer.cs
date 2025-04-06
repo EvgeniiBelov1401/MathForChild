@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             groupBoxOptions = new GroupBox();
             textBoxCartoonLink = new TextBox();
             checkBoxCartoonLink = new CheckBox();
@@ -429,6 +430,7 @@
             Controls.Add(textBoxTestresult);
             Controls.Add(groupBoxTask);
             Controls.Add(groupBoxOptions);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormMain";
             Text = "Математика для ребенка";
             groupBoxOptions.ResumeLayout(false);
