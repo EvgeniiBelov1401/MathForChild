@@ -28,7 +28,7 @@ namespace MathForChild
         private string picSilver = "silver.gif";
         private string picBronze = "bronze.gif";
         private string picStupid = "stupid.gif";
-        public string url;
+        public string? url;
 
         public FormMain()
         {
@@ -105,14 +105,25 @@ namespace MathForChild
         {
             try
             {
-                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+                if (string.IsNullOrEmpty(url))
+                {
+                    throw new Exception();
+                }
+                else
+                {
+                    Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+                    buttonCartoonStart.Enabled = false;
+                }                
             }
             catch (Exception)
             {
                 MessageBox.Show($"Такого адреса не существует...{Environment.NewLine}" +
                     $"Будет запущен сайт По умолчанию...");
-                url = "https://rutube.ru/search/?suggest=1&query=мармеладный%20мишка";
-                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+                url = "https://rutube.ru/search/?suggest=1&query=мармеладный%20мишка";                
+                if (!string.IsNullOrEmpty(url))
+                {
+                    Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+                }
             }
         }
 
@@ -325,6 +336,7 @@ namespace MathForChild
                 pictureBoxForChild.Visible = true;
                 pictureBoxForChild.Image = Image.FromFile(picGold);
                 buttonCartoonStart.Visible = true;
+                buttonCartoonStart.Enabled = true;
             }
             else if (procentResult >= 70 && procentResult < 90)
             {
